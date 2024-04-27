@@ -60,6 +60,7 @@ CCCW = -finput-charset=windows-1251 -fexec-charset=windows-1251
 HS = $(sort $(CHEADERS) $(GRMHEADER) $(CAIOGENERH) $(SMGENERH))
 INIT="C:\Users\Elizabeth\Desktop\inf\MinIDE\SciTE/../lib/initansicp.o"
 
+
 .PHONY : all clean
 
 all: $(TARGET)/_all_.exe
@@ -80,6 +81,7 @@ $(GRMGENER) $(GRMHEADER): $(GRMSOURCE)
 	bison -Werror=conflicts-sr,conflicts-rr -Wcounterexamples -o$(GRMGENER) -d $<
 
 
+
 $(TARGET)/%.cpp $(TARGET)/%.hpp: %.uxf
 	smgen -o $(TARGET)/ $<
 
@@ -96,6 +98,7 @@ $(TARGET)/%.o: $(TARGET)/%.cpp $(CPPHEADERS) $(HS)
 
 $(TARGET)/%.o: %.c $(HS)
 	$(GCC) $(CCFLAGS) $(if $(filter uc%,$<),$(CCCS),$(CCCW)) -o $@ -I. -I$(TARGET) -c $<
+
 
 $(TARGET)/_all_.exe: $(OBJS) Makefile
 	$(CC) $(CCFLAGS) $(LFLAGS) -o $(TARGET)/_all_ $(OBJS) $(INIT) $(addprefix -l,$(LIBS))

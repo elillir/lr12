@@ -3,6 +3,7 @@
 int main()
 { initwindow(800,600);
  house(); // дом
+ sun(); // солнце
  getch();
  closegraph();
 }
